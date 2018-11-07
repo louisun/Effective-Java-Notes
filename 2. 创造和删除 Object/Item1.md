@@ -18,7 +18,7 @@ public static Boolean valueOf(boolean b){
 
 比如：构造器 `BigInteger(int, int, Random)` 返回的 `BigInteger` 可能是素数，如果用名为 `BigInteger.probablePrime` 的静态工厂方法来表示显然更为清楚
 
-### 2. 静态工厂不需要每次调用的时候都创建一个新对象
+###  2. 静态工厂不需要每次调用的时候都创建一个新对象
 
 允许不可变类 [(Item 17)]() 使用预先构造好的实例，或者当实例构造好的时候缓存下来，避免重复构造不必要的对象。
 
@@ -140,7 +140,7 @@ public class Demo {
 
 
 
-![2image-20181106231309447](/Users/louisun/Library/Application Support/typora-user-images/image-20181106231309447.png)
+![](https://bucket-1255905387.cos.ap-shanghai.myqcloud.com/2018-11-06-23-22-53_r8.png)
 
 
 
