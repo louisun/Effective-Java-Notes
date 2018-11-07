@@ -1,10 +1,4 @@
-# Item 1: 考虑静态工厂，而非构造器
-
-
-
-[TOC]
-
-
+# Item1. 静态工厂方法代替构造器
 
 ```java
 public static Boolean valueOf(boolean b){
@@ -77,6 +71,52 @@ Java 8 之后，接口也可以有静态方法了，所以没有必要为接口�
 
 有很多服务提供商框架，比如 Bridge pattern。依赖注入框架 [(Item 5)]() 可以被视为强大的 service providers。Java 6 平台包括了通用目的的 `java.util.ServiceLoader`，一般不需要也不应该自己去写 service provider framework。JDBC 用的不是 `ServiceLoader`，因为比它更早。
 
+
+```java
+// Service provider framwork sketch
+
+// Service Inerface
+public interface Service {
+    ... // Service-spcific methods go here
+}
+
+// Service provider interface
+public interface Provider{
+    // 产生一个 Service 实例
+    Service newService();
+}
+
+// Noninstantiable class for service registration and access
+public class Services{
+    private Services(){}
+
+    // Maps service names to service
+    private static final Map<String, Provider> providers = new ConcurrentHashMap<String, Provider>();
+
+    public static void registerDefaultProvider(Provider p){
+        registerDefaultProvider(DEFAULT_PROVIDER_NAME, p);
+    }
+
+    public static registerDefaultProvider(String name, Provider p){
+        provider.put(name, p);
+    }
+
+    // Service access API
+    public static Service newInstance(){
+        return newInstance(DEFAULT_PROVIDER_NAME)
+    }
+
+    public static Service newInstance(String name){
+        Provider p = providers.get(name);
+        if(p == null){
+            throw new IllegalArgumentException(
+                "No provider regietered with name: " + name);
+            )
+        }
+        return p.newService();
+    }
+}
+```
 
 
 ## 缺点
