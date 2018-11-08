@@ -1,6 +1,5 @@
 # Item2.遇到多个构造器参数要考虑使用 Builder
 
-![](https://bucket-1255905387.cos.ap-shanghai.myqcloud.com/2018-11-07-22-01-21_r67.png)
 
 静态工厂和构造器都不能很好地扩展大量可选参数。
 
@@ -224,11 +223,13 @@ public class Calzone extends Pizza {
             return this;
         }
 
-        @Override public Calzone build() {
+        @Override 
+        public Calzone build() {
             return new Calzone(this);
         }
 
-        @Override protected Builder self() { return this; }
+        @Override 
+        protected Builder self() { return this; }
     }
 
     private Calzone(Builder builder) {
