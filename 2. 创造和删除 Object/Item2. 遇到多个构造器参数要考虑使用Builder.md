@@ -98,7 +98,7 @@ public class NutritionFacts {
 }
 ```
 
-## Builder 模式
+## 3. Builder 模式
 
 第三种方法：Builder 模式，不直接生成想要的对象，让客户端利用所有必要的参数调用构造器（或静态工厂），得到 `builder` 对象，然后在 builder 对象的基础上调用类似于 `setter` 的方法，来设置每个相关的可选参数。最后，调用 `build` 方法生成不可变的对象。
 
@@ -187,6 +187,106 @@ public interface Builder<T> {
 Tree buildTree(Builder<? extends Node> nodeBuilder){...}
 ```
 
+## 继承的 Builder (以 Pizza 为例)
+
+```java
+public abstract class Pizza {
+    public enum Topping { HAM, MUSHROOM, ONION, PEPPER, SAUSAGE }
+    final Set<Topping> toppings;
+
+    abstract static class Builder<T extends Builder<T>> {
+        EnumSet<Topping> toppings = EnumSet.noneOf(Topping.class);
+        public T addTopping(Topping topping) {
+            toppings.add(Objects.requireNonNull(topping));
+            return self();
+        }
+
+        abstract Pizza build();
+
+        // Subclasses must override this method to return "this"
+        protected abstract T self();
+    }
+    
+    Pizza(Builder<?> builder) {
+        toppings = builder.toppings.clone(); // See Item 50
+    }
+}
+
+// Subclass with hierarchical builder (Page 15)
+public class Calzone extends Pizza {
+    private final boolean sauceInside;
+
+    public static class Builder extends Pizza.Builder<Builder> {
+        private boolean sauceInside = false; // Default
+
+        public Builder sauceInside() {
+            sauceInside = true;
+            return this;
+        }
+
+        @Override public Calzone build() {
+            return new Calzone(this);
+        }
+
+        @Override protected Builder self() { return this; }
+    }
+
+    private Calzone(Builder builder) {
+        super(builder);
+        sauceInside = builder.sauceInside;
+    }
+
+    @Override 
+    public String toString() {
+        return String.format("Calzone with %s and sauce on the %s",
+                toppings, sauceInside ? "inside" : "outside");
+    }
+}
+
+public class NyPizza extends Pizza {
+    public enum Size { SMALL, MEDIUM, LARGE }
+    private final Size size;
+
+    public static class Builder extends Pizza.Builder<Builder> {
+        private final Size size;
+
+        public Builder(Size size) {
+            this.size = Objects.requireNonNull(size);
+        }
+
+        @Override public NyPizza build() {
+            return new NyPizza(this);
+        }
+
+        @Override protected Builder self() { return this; }
+    }
+
+    private NyPizza(Builder builder) {
+        super(builder);
+        size = builder.size;
+    }
+
+    @Override 
+    public String toString() {
+        return "New York Pizza with " + toppings;
+    }
+}
+
+// Using the hierarchical builder (Page 16)
+public class PizzaTest {
+    public static void main(String[] args) {
+        NyPizza pizza = new NyPizza.Builder(SMALL)
+                .addTopping(SAUSAGE).addTopping(ONION).build();
+        Calzone calzone = new Calzone.Builder()
+                .addTopping(HAM).sauceInside().build();
+        
+        System.out.println(pizza);
+        System.out.println(calzone);
+    }
+}
+
+
+```
 
 ## Builder 的不足
 
