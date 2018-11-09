@@ -24,7 +24,7 @@ String s = new String("stringette); // DON'T DO THIS!
 
 ## 静态工厂
 
-对于提供了静态工厂方法、和构造器的不变类，通常可以使用静态工厂而不是构造器，以避免创建不必要的对象 [(Item1 )]()。例如静态工厂方法`Boolean.valueOf(String)` 几乎总是优先于构造器 `Boolean(String)`。
+对于提供了静态工厂方法、和构造器的不变类，通常可以使用静态工厂而不是构造器，以避免创建不必要的对象 。例如静态工厂方法`Boolean.valueOf(String)` 几乎总是优先于构造器 `Boolean(String)`。
 
 
 

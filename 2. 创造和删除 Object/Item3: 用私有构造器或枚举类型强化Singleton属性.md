@@ -59,14 +59,14 @@ public class Elvis {
 **工厂方法的优势：**
 
 1. 提供了灵活性，在不改变 API 的前提下，可以改变类是否应该为 Singleton 的想法；
-2. 与泛型有关 [(Item 30)]()
+2. 与泛型有关 
 
 
 
 
 ---
 
-为了使上面任一方法实现的 Singleton 类变成是 Serializable 的，仅仅在声明中添加 “implements Serializable” 的不够的。为了维护并保证 Singleton，必须声明所有实例域是 transient 瞬时的，并提供一个 `readResolve()` 方法 [(Item 89)]()。否则，每次反序列化一个序列化实例时，都会创建一个新的实例，在我们这个例子中就会返回“假冒的Elvis”，防止这种情况，Elvis 类中还要添加 `readResolve` 方法。
+为了使上面任一方法实现的 Singleton 类变成是 Serializable 的，仅仅在声明中添加 “implements Serializable” 的不够的。为了维护并保证 Singleton，必须声明所有实例域是 transient 瞬时的，并提供一个 `readResolve()` 方法 。否则，每次反序列化一个序列化实例时，都会创建一个新的实例，在我们这个例子中就会返回“假冒的Elvis”，防止这种情况，Elvis 类中还要添加 `readResolve` 方法。
 
 
 

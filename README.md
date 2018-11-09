@@ -13,7 +13,7 @@
 
 
 - Chapter 2 : 创建和删除 Object
-- Chapter 3 : 所有 Object 常见的 Methods
+- Chapter 3 : 对于所有对象都通用的方法
 - Chapter 4 : Class 和 Interface
 - Chapter 5 : Generics (通用的建议)
 - Chapter 6 : Enum 和 Annotation
