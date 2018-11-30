@@ -1,9 +1,10 @@
 # Effective-Java-Notes
 
-![](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-24%25-brightgreen.svg)
+
+![](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-30%25-brightgreen.svg)
 
 
-> The Best Programming Practices In Majority of Times
+> The Best Programming Practices In Majority of Times（进度 30/90）
 
 
 ![](https://bucket-1255905387.cos.ap-shanghai.myqcloud.com/2018-11-06-19-56-59_r81.png)
@@ -17,7 +18,7 @@
 - Chapter 2 : 创建和删除 Object
 - Chapter 3 : 对于所有对象都通用的方法
 - Chapter 4 : Class 和 Interface
-- Chapter 5 : Generics (通用的建议)
+- Chapter 5 : 泛型
 - Chapter 6 : Enum 和 Annotation
 - Chapter 7 : Lambda 和 Stream
 - Chapter 8 : Methods
