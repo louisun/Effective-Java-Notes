@@ -1,6 +1,6 @@
 # Effective-Java-Notes
 
-[![](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-24%25-brightgreen.svg)]()
+![](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-24%25-brightgreen.svg)
 
 
 > The Best Programming Practices In Majority of Times
