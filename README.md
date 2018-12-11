@@ -1,10 +1,10 @@
 # Effective-Java-Notes
 
 
-![](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-37.7%25-brightgreen.svg)
+![](https://img.shields.io/badge/%E8%BF%9B%E5%BA%A6-45.5%25-brightgreen.svg)
 
 
-> The Best Programming Practices In Majority of Times（进度 34/90）
+> The Best Programming Practices In Majority of Times（进度 41/90）
 
 
 ![](https://bucket-1255905387.cos.ap-shanghai.myqcloud.com/2018-11-06-19-56-59_r81.png)
