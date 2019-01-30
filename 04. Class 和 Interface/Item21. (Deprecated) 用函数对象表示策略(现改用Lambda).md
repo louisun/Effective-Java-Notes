@@ -1,4 +1,4 @@
-# Item21. （过时）表示策略：Lambda！函数接口过时了
+# Item21. (Deprecated) 用函数对象表示策略(现改用Lambda)
 
 
 
